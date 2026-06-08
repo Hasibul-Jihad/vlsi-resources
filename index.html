@@ -534,6 +534,97 @@
     flex-shrink: 0;
   }
 
+  /* ── TOC ── */
+  .toc-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px 24px;
+    margin-bottom: 36px;
+  }
+  .toc-heading {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+    margin-bottom: 14px;
+  }
+  .toc-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    list-style: none;
+  }
+  .toc-item a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--ink-2);
+    font-size: 14px;
+    font-weight: 400;
+    border: 1px solid transparent;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+  }
+  .toc-item a:hover {
+    background: var(--surface-3);
+    border-color: var(--border);
+    color: var(--accent);
+  }
+  .toc-item.active a {
+    background: #fff8ee;
+    border-color: rgba(200,146,63,0.3);
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .toc-lec-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    background: var(--accent);
+    color: var(--gold);
+    padding: 2px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    letter-spacing: 0.04em;
+  }
+  .toc-item.pending-lec .toc-lec-num {
+    background: var(--surface-3);
+    color: var(--ink-4);
+  }
+  .toc-item.pending-lec a {
+    color: var(--ink-4);
+  }
+  .toc-badge-coming {
+    margin-left: auto;
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    background: var(--surface-3);
+    color: var(--ink-4);
+    padding: 2px 8px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    letter-spacing: 0.04em;
+  }
+  .toc-badge-live {
+    margin-left: auto;
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    background: #eaf3de;
+    color: #3b6d11;
+    padding: 2px 8px;
+    border-radius: 10px;
+    border: 1px solid rgba(99,153,34,0.2);
+    letter-spacing: 0.04em;
+  }
+  .toc-vid-count {
+    font-size: 12px;
+    color: var(--ink-3);
+  }
+
   /* ── COMING SOON ── */
   .coming-soon {
     background: var(--surface);
@@ -652,6 +743,35 @@
     </div>
   </div>
 
+  <!-- TOC -->
+  <nav class="toc-wrap" aria-label="Lecture table of contents">
+    <p class="toc-heading">Jump to Lecture</p>
+    <ul class="toc-list">
+      <li class="toc-item pending-lec">
+        <a href="#lecture-1">
+          <span class="toc-lec-num">LEC 01</span>
+          Introduction to VLSI Design
+          <span class="toc-badge-coming">Coming Soon</span>
+        </a>
+      </li>
+      <li class="toc-item pending-lec">
+        <a href="#lecture-2">
+          <span class="toc-lec-num">LEC 02</span>
+          VLSI Design Fundamentals II
+          <span class="toc-badge-coming">Coming Soon</span>
+        </a>
+      </li>
+      <li class="toc-item active">
+        <a href="#lecture-3">
+          <span class="toc-lec-num">LEC 03</span>
+          MOS Devices &amp; Basic Circuits
+          <span class="toc-vid-count">3 videos · 1 PDF</span>
+          <span class="toc-badge-live">Available</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
   <!-- LECTURES -->
   <section id="lectures" aria-label="Lecture resources">
     <p class="section-label">Course Content</p>
@@ -744,7 +864,7 @@
       <div class="pdf-list">
 
         <!-- PDF 1 — attached -->
-        <a class="pdf-card has-pdf" href="lec3_mos_devices.pdf" target="_blank" rel="noopener" aria-label="Open MOS Devices & Basic Circuits PDF">
+        <a class="pdf-card has-pdf" href="lec3_mos%20devices.pdf" target="_blank" rel="noopener" aria-label="Open MOS Devices & Basic Circuits PDF">
           <div class="pdf-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="#c8923f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
@@ -789,12 +909,33 @@
       </div>
     </article>
 
-    <!-- PLACEHOLDER for future lectures -->
-    <div class="coming-soon" aria-label="More lectures coming soon">
-      <div class="cs-icon">📋</div>
-      <p style="font-weight: 500; color: var(--ink-2); margin-bottom: 6px;">More Lectures Coming Soon</p>
-      <p>This page is updated regularly as new lecture materials are added.</p>
-    </div>
+    <!-- LECTURE 2 placeholder -->
+    <article class="lecture-block" id="lecture-2" style="opacity:0.5;">
+      <div class="lecture-header">
+        <span class="lecture-num" style="background: var(--surface-3); color: var(--ink-4);">Lecture 02</span>
+        <h3 class="lecture-title-text" style="color: var(--ink-4);">VLSI Design Fundamentals II</h3>
+      </div>
+      <div class="lecture-divider"></div>
+      <div class="coming-soon">
+        <div class="cs-icon">📋</div>
+        <p style="font-weight: 500; color: var(--ink-2); margin-bottom: 6px;">Coming Soon</p>
+        <p>Videos and notes for Lecture 2 will be added here.</p>
+      </div>
+    </article>
+
+    <!-- LECTURE 1 placeholder -->
+    <article class="lecture-block" id="lecture-1" style="opacity:0.5;">
+      <div class="lecture-header">
+        <span class="lecture-num" style="background: var(--surface-3); color: var(--ink-4);">Lecture 01</span>
+        <h3 class="lecture-title-text" style="color: var(--ink-4);">Introduction to VLSI Design</h3>
+      </div>
+      <div class="lecture-divider"></div>
+      <div class="coming-soon">
+        <div class="cs-icon">📋</div>
+        <p style="font-weight: 500; color: var(--ink-2); margin-bottom: 6px;">Coming Soon</p>
+        <p>Videos and notes for Lecture 1 will be added here.</p>
+      </div>
+    </article>
 
   </section>
 
